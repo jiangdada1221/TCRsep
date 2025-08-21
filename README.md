@@ -1,5 +1,5 @@
 ## TCRsep: T-cell receptor selection estimation procedure
-TCRsep is a python software for the inference of the selection factor for immune receptor repertoires. It takes a productive TCR repertoire and pre-selection repertoire (optional) as inputs for model training. After that, it outputs the selection factors for any given TCR clonetypes (defined in the __CDR3-V-J__ format). It also outputs their post-selection probabilities that can be further utilized to analyze the receptor sharing pattern and identify indicative disease-associated receptors. 
+TCRsep is a Python software for the inference of the selection factor for immune receptor repertoires. It takes a productive TCR repertoire and a pre-selection repertoire (optional) as inputs for model training. After that, it outputs the selection factors for any given TCR clonotypes (defined in the __CDR3-V-J__ format). It also outputs their post-selection probabilities that can be further utilized to analyze the receptor sharing pattern and identify indicative disease-associated receptors. 
  <br />
 
 <img src="https://github.com/jiangdada1221/TCRsep/blob/main/figs/workflow_github.png" width="800"> <br />
@@ -19,7 +19,7 @@ TCRsep depends on multiple packages. It's __highly recommended__ to manually ins
 
 ## Usage instructions
 #### 1. Train a TCRsep model: 
-type `python train.py -h` to display all the commandline options: 
+type `python train.py -h` to display all the command-line options: 
 |Commands|Description|
 |--|--|
 |`-h, --help`|show the help message and exit|
@@ -35,14 +35,14 @@ type `python train.py -h` to display all the commandline options:
 |`--device=STR`|The device to run TCRsep. Default `cuda:0`.|
 |`--save_emb`|If specified, will save the embedding of the input sequences. Default `False`.|
 
-__Notes:__ the data file (`.csv/.tsv`) needs at least three columns specifying the CDR3β amino acid sequences, V genes, and J genes: `CDR3.beta`, `V` and `J`. The `save_dir` will contain the pre-selection repertoire file, embeddings of pre- and post-selection repertoires, the selection model, and a json file recording the input arguments.  
+__Notes:__ the data file (`.csv/.tsv`) needs at least three columns specifying the CDR3β amino acid sequences, V genes, and J genes: `CDR3.beta`, `V` and `J`. The `save_dir` will contain the pre-selection repertoire file, embeddings of pre- and post-selection repertoires, the selection model, and a JSON file recording the input arguments.  
 
 #### 2. Use the TCRsep to infer selection factors, pre- and post-selection probabilities:
 type `python eval.py -h` to display all the commandline options:
 |Commands|Description|
 |--|--|
 |`--data_path=FILE`|(__required__) The path to the query repertoire file that needs to be evaluated. An example: `data/query_data.csv`.| 
-|`--data_emb_path=FILE`|The path to the embedding of the query repertoire. If specified, will save the time for embedding.|  
+|`--data_emb_path=FILE`|The path to the embedding of the query repertoire. If specified, it will save time for embedding.|  
 |`--sel_model_path=DIR`|The path to the directory of the TCRsep model. If not specified, will use the default model inferred on Emerson data.|  
 |`--save_dir=DIR`|The directory that saves all the output files. Default `result_eval/`.|  
 |`--device=STR`|The device to run TCRsep. Default `cuda:0`.|
@@ -113,7 +113,7 @@ For other customized usages, we provide the following module descriptions. Users
 | utils.py                                  | N/A (contains utility functions)                  |
 
 ## Processed data and additional notes
-All the data used in the manuscript is publicly available, so we suggest readers refer to the original papers for more details. We also provide our processed data which can be publicly [downloaded](https://drive.google.com/file/d/1tQTeZn-tbKcHH5_NsArb5JAhCVcUmOy8/view?usp=sharing). We also add an callback-```EarlyStopping(monitor='val_loss',patience=5,verbose=1,restore_best_weights=True)``` to the ```infer_selection``` function of sonia.py to enable early stopping for fair comparison. Though it seems that settting ```monitor=True``` can also select the best model, early stopping can reduce training resources. For benchmarking, 80% of both pre- and post-sel sequences are selected for training in each cross-validation fold; 20% remaining pre- and post-sel sequences are used for evaluation.
+All the data used in the manuscript are publicly available, so we suggest readers refer to the original papers for more details. We also provide our processed data which can be publicly [downloaded](https://drive.google.com/file/d/1tQTeZn-tbKcHH5_NsArb5JAhCVcUmOy8/view?usp=sharing). We also add a callback-```EarlyStopping(monitor='val_loss',patience=5,verbose=1,restore_best_weights=True)``` to the ```infer_selection``` function of sonia.py to enable early stopping for fair comparison. Though it seems that settting ```monitor=True``` can also select the best model, early stopping can reduce training resources. For benchmarking, 80% of both pre- and post-sel sequences are selected for training in each cross-validation fold; 20% remaining pre- and post-sel sequences are used for evaluation.
 
 __Data structure__:
 - 📁 `data/` 
@@ -138,13 +138,13 @@ __Data structure__:
 Note that some files were saved in the compressed format, requiring the argument `compression='gzip'` to load.
 
 ## Results replication
-We have prepared a replication protocol of the benchmarking experiments in our manuscript. If can be can be publicly [downloaded](https://drive.google.com/file/d/1vtVhWv41tC0wNVlEgGdxlESXgl0aM_cy/view?usp=sharing). If you have any question or problem for this replication protocal, please contact yuepjiang3-c@my.cityu.edu.hk. We will answer you inquries as soon as possible.     
+We have prepared a replication protocol of the benchmarking experiments in our manuscript. If can be can be publicly [downloaded](https://drive.google.com/file/d/1vtVhWv41tC0wNVlEgGdxlESXgl0aM_cy/view?usp=sharing). If you have any questions or problems with this replication protocol, please contact yuepjiang3-c@my.cityu.edu.hk. We will answer your inquiries as soon as possible.     
 
 ## Contact
 ```
 Author: Yuepeng Jiang
 Email: yuepjiang3-c@my.cityu.edu.hk/yuj009@eng.ucsd.edu/jiangdada12344321@gmail.com
-Note: For instant query, feel free to send me an email since I check email often. 
+Note: For instant query, feel free to send me an email since I check my email often. 
 Otherwise, you may open an issue section in this repository.
 ```
 
