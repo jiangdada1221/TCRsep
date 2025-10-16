@@ -45,7 +45,7 @@ spectrum_pre,spectrum_real = sharing_predictor.sharing_spectrum(est_num=100000)
 DATCR_predictor = DATCR('data/sharing')
 pvalues = DATCR_predictor.pvalue('data/query_data_evaled.csv')
 ```
-__Notes:__ the `query_data_evaled.csv` should contain an additional column `ppost` specifying the post-selection probabilities. Please [eval](https://github.com/jiangdada1221/TCRsep?tab=readme-ov-file#2-use-the-tcrsep-to-infer-selection-factors-pre--and-post-selection-probabilities) the `query_data` file first if it only contains the `CDR3-V-J` information (see section 4).  
+__Notes:__ the `query_data_evaled.csv` should contain an additional column `ppost` specifying the post-selection probabilities. Please [eval](https://github.com/jiangdada1221/TCRsep?tab=readme-ov-file#4-use-the-tcrsep-to-infer-selection-factors-pre--and-post-selection-probabilities) the `query_data` file first if it only contains the `CDR3-V-J` information (see section 4).  
 
 #### 2. A quick demo of training a TCRsep model using Python script
 ```python
